@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Template/src/Bsol.Business.Template.Api/Bsol.Business.Template.Api.csproj" />
+  <Project Path="Template/src/Bsol.Business.Template.Core/Bsol.Business.Template.Core.csproj" />
+  <Project Path="Template/src/Bsol.Business.Template.Infrastructure/Bsol.Business.Template.Infrastructure.csproj" />
+  <Project Path="Template/src/Bsol.Business.Template.SharedKernel/Bsol.Business.Template.SharedKernel.csproj" />
+  <Project Path="Template/tests/Bsol.Business.Template.IntegrationTests/Bsol.Business.Template.IntegrationTests.csproj" />
+</Solution>

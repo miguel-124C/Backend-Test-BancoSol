@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: bsol-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=MyPassw0rd!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    networks:
+      - bsol-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: bsol-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=bsol_db
+    ports:
+      - "5432:5432"
+    networks:
+      - bsol-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: bsol-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - bsol-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+networks:
+  bsol-network:
+    driver: bridge

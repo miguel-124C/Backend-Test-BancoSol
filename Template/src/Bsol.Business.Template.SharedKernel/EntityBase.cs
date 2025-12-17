@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Bsol.Business.Template.SharedKernel;
+// This can be modified to EntityBase<TId> to support multiple key types (e.g. Guid)
+
+[ExcludeFromCodeCoverage]
+public abstract class EntityBase
+{
+    [Key]
+    [Column("id")]
+    public Guid Id { get; set; }
+
+    private readonly List<DomainEventBase> _domainEvents = new();
+    [NotMapped]
+    public IEnumerable<DomainEventBase> DomainEvents => _domainEvents.AsReadOnly();
+
+    protected void RegisterDomainEvent(DomainEventBase domainEvent) => _domainEvents.Add(domainEvent);
+    internal void ClearDomainEvents() => _domainEvents.Clear();
+}
