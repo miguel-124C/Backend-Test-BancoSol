@@ -1,4 +1,4 @@
-﻿
+
 using Bsol.Business.Template.Api;
 using Bsol.Business.Template.Api.Extensions;
 using Bsol.Business.Template.Core;
@@ -47,6 +47,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+
+app.UseCors("AllowedOrigins");
 
 app.UseFastEndpoints(c =>
 {

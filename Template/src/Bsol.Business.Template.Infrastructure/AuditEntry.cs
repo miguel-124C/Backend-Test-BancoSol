@@ -1,4 +1,4 @@
-﻿
+
 using Bsol.Business.Template.SharedKernel.Audit;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -25,7 +25,7 @@ public class AuditEntry
         var audit = new Audit
         {
             TableName = TableName,
-            DateTime = DateTime.Now.ToUniversalTime(),//DateTime.UtcNow,
+            DateTime = DateTime.UtcNow,
             KeyValues = System.Text.Json.JsonSerializer.Serialize(KeyValues),
             OldValues = OldValues.Count == 0 ? null : System.Text.Json.JsonSerializer.Serialize(OldValues),
             NewValues = NewValues.Count == 0 ? null : System.Text.Json.JsonSerializer.Serialize(NewValues)

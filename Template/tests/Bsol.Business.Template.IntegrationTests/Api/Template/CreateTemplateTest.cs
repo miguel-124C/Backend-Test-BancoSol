@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using Bsol.Business.Template.Api.Endpoints.Template;
@@ -59,7 +59,7 @@ public class CreateTemplateTest : BaseEfRepositoryTest, IClassFixture<CustomWebA
         var jsonData = JsonSerializer.Serialize(createCategory);
         var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
         // Act
-        var response = await _httpClient.PostAsync($"Bsol/BusinessApiCustomer/v1{_url}", content, default);
+        var response = await _httpClient.PostAsync($"Bsol/v1{_url}", content, default);
 
         if (!response.IsSuccessStatusCode)
         {

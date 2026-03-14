@@ -22,10 +22,13 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=bsol_db
     ports:
-      - "5432:5432"
+      - "5434:5432"
     networks:
       - bsol-network
     restart: unless-stopped
+    # Agregando volumen para persistencia de datos
+    volumes:
+      - ./postgresData:/var/lib/postgresql/data
 
   redis:
     image: redis:7-alpine

@@ -1,4 +1,4 @@
-﻿using Bsol.Business.Template.Infrastructure.Data;
+using Bsol.Business.Template.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,4 +30,6 @@ public abstract class BaseEfRepositoryTest
     }
 
     public EfRepository<Core.TemplateAggregate.Template> GetCategorySeedRepository() => new(_dbContext);
+    public EfRepository<Core.AccountAggregate.Account> GetAccountSeedRepository() => new(_dbContext);
+    public EfRepository<Core.TransactionAggregate.Transaction> GetTransactionSeedRepository() => new(_dbContext);
 }

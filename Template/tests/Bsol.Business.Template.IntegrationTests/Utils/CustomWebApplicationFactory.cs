@@ -1,4 +1,4 @@
-﻿using Bsol.Business.Template.IntegrationTests.Mock.Service;
+using Bsol.Business.Template.IntegrationTests.Mock.Service;
 using Microsoft.AspNetCore.Mvc.Testing;
 using NSubstitute;
 
@@ -23,10 +23,10 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
             builder.ConfigureServices(services =>
             {
+                configureMocks?.Invoke(services);
             });
 
         }).CreateClient();
-        client.BaseAddress = new Uri(_wireMockSetup.BaseUrl);
         return client;
     }
     public new void Dispose()

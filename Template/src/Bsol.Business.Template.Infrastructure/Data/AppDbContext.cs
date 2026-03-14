@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Bsol.Business.Template.SharedKernel;
 using Bsol.Business.Template.SharedKernel.Audit;
@@ -28,6 +28,8 @@ public class AppDbContext : DbContext
 
     }
     public DbSet<Core.TemplateAggregate.Template> Template { get; set; }
+    public DbSet<Core.AccountAggregate.Account> Account { get; set; }
+    public DbSet<Core.TransactionAggregate.Transaction> Transaction { get; set; }
 
     //User For Audits
     public DbSet<Audit> Audits { get; set; }
@@ -84,12 +86,12 @@ public class AppDbContext : DbContext
             {
                 case EntityState.Added:
                     entry.Entity.CreatedBy = userName;
-                    entry.Entity.CreatedAt = DateTime.Now.ToUniversalTime();
+                    entry.Entity.CreatedAt = DateTime.UtcNow;
                     break;
 
                 case EntityState.Modified:
                     entry.Entity.LastModifiedBy = userName;
-                    entry.Entity.LastModified = DateTime.Now.ToUniversalTime();
+                    entry.Entity.LastModified = DateTime.UtcNow;
                     break;
             }
         }
